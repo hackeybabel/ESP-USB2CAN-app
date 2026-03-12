@@ -35,6 +35,7 @@ from .send_frame import SendFramePanel
 from .bus_load import BusLoadCalculator
 from .styles import get_stylesheet
 from .protocol import BAUD_INDEX_TO_RATE, CANFrame
+from . import __version__
 
 
 class MainWindow(QMainWindow):
@@ -469,6 +470,7 @@ class MainWindow(QMainWindow):
             self,
             "ABOUT",
             "ESP-USB2CAN\nDeveloped by Hemant Babel\n"
+            f"Version: {__version__}\n"
             "PyQt6 desktop app for ESP32-C3 USB-to-CAN bridge.\n"
             "Supports live RX/TX logging, filtering, and frame transmission.",
         )
