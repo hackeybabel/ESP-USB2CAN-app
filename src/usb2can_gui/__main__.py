@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Hemant Babel
+# SPDX-License-Identifier: GPL-3.0-only
 """Entry point for python -m usb2can_gui."""
 
 import sys
@@ -15,3 +17,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+

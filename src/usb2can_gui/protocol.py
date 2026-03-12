@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Hemant Babel
+# SPDX-License-Identifier: GPL-3.0-only
 """
 Binary protocol for USB2CAN (ESP32-C3) bridge.
 All multi-byte values are little-endian. Matches main/usb2can_bridge.c.
@@ -153,3 +155,5 @@ class ProtocolParser:
         self._buffer.clear()
         self._msg_type = None
         self._expect_len = None
+
+

@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Hemant Babel
+# SPDX-License-Identifier: GPL-3.0-only
 """
 Serial bridge to USB2CAN device: open/close port, send commands, RX thread with Qt signals.
 """
@@ -89,6 +91,7 @@ class Bridge(QObject):
         self._ser: serial.Serial | None = None
         self._rx_thread: RxThread | None = None
         self._can_open = False
+        self._awaiting_open_ack = False
 
     def connect(self, port: str) -> bool:
         """Open serial port and start RX thread. Emit error and return False on failure."""
@@ -106,7 +109,7 @@ class Bridge(QObject):
             self.error.emit(str(e))
             return False
         self._rx_thread = RxThread(self._ser, self)
-        self._rx_thread.ack_received.connect(self.ack_received.emit)
+        self._rx_thread.ack_received.connect(self._on_ack_received)
         self._rx_thread.frame_received.connect(self.frame_received.emit)
         self._rx_thread.error.connect(self.error.emit)
         self._rx_thread.start()
@@ -115,6 +118,7 @@ class Bridge(QObject):
     def disconnect(self) -> None:
         """Close CAN if open, stop RX thread, close serial."""
         self._can_open = False
+        self._awaiting_open_ack = False
         if self._rx_thread is not None:
             self._rx_thread.stop()
             self._rx_thread.wait(2000)
@@ -157,10 +161,11 @@ class Bridge(QObject):
         if self._ser is None or not self._ser.is_open:
             return
         try:
+            self._awaiting_open_ack = True
             self._ser.write(build_open())
             self._ser.flush()
-            self._can_open = True
         except Exception as e:
+            self._awaiting_open_ack = False
             self.error.emit(str(e))
 
     def close_can(self) -> None:
@@ -171,6 +176,7 @@ class Bridge(QObject):
             self._ser.write(build_close())
             self._ser.flush()
             self._can_open = False
+            self._awaiting_open_ack = False
         except Exception as e:
             self.error.emit(str(e))
 
@@ -191,3 +197,11 @@ class Bridge(QObject):
             self._ser.flush()
         except Exception as e:
             self.error.emit(str(e))
+
+    def _on_ack_received(self, ok: bool) -> None:
+        if self._awaiting_open_ack:
+            self._can_open = ok
+            self._awaiting_open_ack = False
+        self.ack_received.emit(ok)
+
+

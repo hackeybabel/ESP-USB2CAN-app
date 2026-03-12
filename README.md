@@ -2,6 +2,10 @@
 
 **ESP-USB2CAN app** – Cross-platform GUI for the **ESP USB to CAN** (ESP-USB2CAN firmware) ESP32-C3 bridge. Uses PyQt6 and pyserial; implements the same binary protocol as the firmware.
 
+## License
+
+This project is licensed under **GNU General Public License v3.0 (GPL-3.0-only)**.
+
 ## Requirements
 
 - Python 3.9+

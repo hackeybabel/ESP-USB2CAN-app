@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" fill="none">
+  <defs>
+    <linearGradient id="bridge" x1="250" y1="160" x2="520" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="320" rx="32" fill="#F8FAFC"/>
+
+  <rect x="70" y="92" width="170" height="136" rx="22" fill="#E2E8F0" stroke="#94A3B8" stroke-width="6"/>
+  <rect x="88" y="110" width="36" height="100" rx="10" fill="#CBD5E1"/>
+  <rect x="132" y="122" width="90" height="20" rx="8" fill="#64748B"/>
+  <rect x="132" y="154" width="90" height="20" rx="8" fill="#64748B"/>
+  <rect x="132" y="186" width="90" height="20" rx="8" fill="#64748B"/>
+
+  <path d="M240 160 C300 100 390 100 450 160 C390 220 300 220 240 160 Z" fill="url(#bridge)" opacity="0.95"/>
+  <circle cx="304" cy="160" r="8" fill="#BFDBFE"/>
+  <circle cx="346" cy="130" r="8" fill="#BFDBFE"/>
+  <circle cx="388" cy="160" r="8" fill="#BFDBFE"/>
+  <circle cx="346" cy="190" r="8" fill="#BFDBFE"/>
+
+  <rect x="450" y="76" width="260" height="168" rx="24" fill="#0F172A"/>
+  <rect x="472" y="98" width="216" height="124" rx="16" fill="#1E293B" stroke="#334155" stroke-width="4"/>
+  <circle cx="498" cy="124" r="7" fill="#22C55E"/>
+  <circle cx="526" cy="124" r="7" fill="#F59E0B"/>
+  <circle cx="554" cy="124" r="7" fill="#EF4444"/>
+  <rect x="498" y="144" width="160" height="12" rx="6" fill="#475569"/>
+  <rect x="498" y="164" width="130" height="12" rx="6" fill="#475569"/>
+  <rect x="498" y="184" width="180" height="12" rx="6" fill="#475569"/>
+
+  <text x="760" y="145" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="700" fill="#0F172A">ESP-USB2CAN</text>
+  <text x="760" y="198" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" fill="#475569">Bridge Mark • 3shulmotors</text>
+</svg>
