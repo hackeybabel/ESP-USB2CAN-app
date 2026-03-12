@@ -23,6 +23,7 @@ exe = EXE(
     a.datas,
     [],
     name='esp-usb2can-app',
+    icon='assets/branding/app-icon-bridge-mark.ico',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
