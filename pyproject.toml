@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "esp-usb2can-app"
+version = "0.1.0"
+description = "ESP-USB2CAN app – Cross-platform GUI for ESP USB to CAN (ESP32-C3) bridge"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "PyQt6>=6.4",
+    "pyserial>=3.5",
+]
+
+[project.scripts]
+esp-usb2can-app = "usb2can_gui.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
